@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Stone Paper Scissors Game</title>
+  </head>
+  <body>
+    <h1>Stone Paper Scissor Game</h1>
+
+    <button
+      onclick="
+        let computerChoice = genrateComputerChoice();
+        let resultMsg = getResult('Stone',computerChoice);
+        showResult('Stone',computerChoice,resultMsg);
+  ">
+      Stone
+    </button>
+
+    <button onclick="
+        computerChoice = genrateComputerChoice();
+        resultMsg = getResult('Paper',computerChoice);
+        showResult('Paper',computerChoice,resultMsg);
+        ">Paper</button>
+
+    <button onclick="
+        computerChoice = genrateComputerChoice();
+        resultMsg = getResult('Scissor',computerChoice);
+        showResult('Scissor',computerChoice,resultMsg);
+        ">Scissor</button>
+
+
+    <!-- <h3 id="showResult"></h3> -->
+    <script>
+      computerChoice;
+      function genrateComputerChoice(){
+          let randomNum = (Math.random() *3) ;
+          if(randomNum > 0 && randomNum <=1){
+          return 'Stone';
+        } else if (randomNum > 1 && randomNum <= 2){
+          return 'Paper';
+        } else {
+          return 'Scissor';
+        }
+      }
+
+      function getResult(userMove,computerMove){
+        if (userMove === 'Stone'){
+          if (computerMove === 'Stone') {
+            return `it's a tie`;
+          } else if(computerMove === 'Paper'){
+            return `Computer has won`;
+          } else if(computerMove === 'Scissor') {
+            return 'User won';
+          }
+        } else if(userMove === 'Paper'){
+          if (computerMove === 'Stone') {
+            return `User won`;
+          } else if(computerMove === 'Paper'){
+            return `it's tie`;
+          } else if(computerMove === 'Scissor') {
+            return 'Computer has won';
+          }
+
+        } else if(userMove === 'Scissor'){
+          if (computerMove === 'Stone') {
+            return `Computer has won`;
+          } else if(computerMove === 'Paper'){
+            return `User has won`;
+          } else if(computerMove === 'Scissor') {
+            return `it's tie`;
+          }
+        }
+      }
+
+      function showResult(userMove,computerMove,result){
+        alert(`Your choice is ${userMove}. computer Choice is ${computerMove}. ${result}`);
+      }
+
+    </script>
+  </body>
+</html>

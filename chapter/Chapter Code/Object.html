@@ -47,9 +47,34 @@
 
       // AutoBoxing
 
-      console.log('this is kg coding'.toUpperCase());
+      // console.log('this is kg coding'.toUpperCase());
 
-      console.log('this is kg coding'.replace('kg', 'Knowledge Gate'));
+      // console.log('this is kg coding'.replace('kg', 'Knowledge Gate'));
+
+
+
+      // Call by Value and Refrence
+      let a= 5;
+      let b = a;
+      console.log(`a= ${a} ,b= ${b}`);
+      a= 8;
+      console.log(`a= ${a} ,b= ${b}`);
+      
+
+      let x ={num :5};
+      let y = x;
+      console.log(`x=${x.num}, y=${y.num}`);
+      x.num =8;
+      console.log(`x=${x.num}, y=${y.num}`);
+      
+
+      let p ={pop:'rohit'}
+      let q ={pop:'rohit'}
+      console.log(p==q);
+      console.log(p===q);
+
+      
+      
 
       
     </script>

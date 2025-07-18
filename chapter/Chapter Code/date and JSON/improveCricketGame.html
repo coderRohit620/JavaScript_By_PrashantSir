@@ -7,6 +7,7 @@
   </head>
 
   <body>
+    <center>
     <h1>Bat Ball Stump Game</h1>
 
     <button
@@ -46,6 +47,12 @@
       Reset
     </button>
 
+    <h3 id="user-move"></h3>
+    <h3 id="Computer-move"></h3>
+    <h3 id="result"></h3>
+    <h3 id="Score"></h3>
+    </center>
+
     <script>
       let scoreStr = localStorage.getItem("Score");
       let score;
@@ -69,8 +76,10 @@
             };
 
         score.displayScore = function () {
-          return `Won:${score.win}, Lost:${score.lost} ,Tie:${score.tie}`;
+          return `Score: Won:${score.win}, Lost:${score.lost} ,Tie:${score.tie}`;
         };
+
+        showResult();
       }
 
       computerChoice;
@@ -125,13 +134,12 @@
       function showResult(userMove, computerMove, result) {
         // console.log(score);
         localStorage.setItem("Score", JSON.stringify(score));
-        alert(
-          `You have chosen ${userMove}. Computer choice is ${computerMove}  
-          
-          ${result}
-          ${score.displayScore()}
-          `
-        );
+        document.querySelector('#user-move').innerText = 
+          userMove ?`You have chosen ${userMove}` : '';
+        document.querySelector('#Computer-move').innerText = 
+          computerMove ? `Computer have chosen ${computerMove}` : '';
+        document.querySelector('#result').innerText = result ? result : '';
+        document.querySelector('#Score').innerText = score.displayScore()
       }
     </script>
   </body>

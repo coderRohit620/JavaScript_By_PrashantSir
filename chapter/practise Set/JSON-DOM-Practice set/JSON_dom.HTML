@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>practice set</title>
+  </head>
+
+  <style>
+    button {
+      height: 70px;
+      width: 70px;
+      font-size: 50px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .js-odd {
+      background-color: lightblue;
+    }
+    .js-even {
+      background-color: orange;
+    }
+  </style>
+  <body>
+    <h1 id="greeting"></h1>
+
+    <button id="my-button" onclick="buttonPressed()"></button>
+
+    <script>
+      // let noOfTimesClicked =  0;
+      let noOfTimesClicked =  localStorage.getItem('noOfTimesCkicked') || 0;
+
+      function buttonPressed() {
+        noOfTimesClicked++;
+        localStorage.setItem('noOfTimesCkicked',noOfTimesClicked);
+        updateButton();
+      }
+
+      function updateButton() {
+        let button = document.querySelector("#my-button");
+        if (noOfTimesClicked % 2 === 0) {
+          button.classList.remove("js-odd");
+          button.classList.add("js-even");
+        } else {
+          button.classList.remove("js-even");
+          button.classList.add("js-odd");
+        }
+        button.innerText = noOfTimesClicked;
+      }
+
+      updateButton();
+
+      function doGreeting(name = "Dear") {
+        let date = new Date();
+        console.log(date);
+        // let hours = date.getHours();
+        let hours = 17;
+        console.log(hours);
+
+        if (hours >= 0 && hours < 12) {
+          console.log("Good Morning");
+
+          document.querySelector(
+            "#greeting"
+          ).innerText = `Good Morning ${name}`;
+        } else if (hours > 12 && hours < 16) {
+          console.log("Good After Noon");
+          document.querySelector(
+            "#greeting"
+          ).innerText = `Good After Noon ${name}`;
+        } else {
+          console.log("Good Night");
+          document.querySelector("#greeting").innerText = `Good Night ${name}`;
+        }
+      }
+      doGreeting();
+    </script>
+  </body>
+</html>
